@@ -11,6 +11,8 @@ namespace twozerofoureight
         protected int boardSize; // default is 4
         protected int[,] board;
         protected Random rand;
+        public int score = 0;
+        
 
         public TwoZeroFourEightModel() : this(4)
         {
@@ -32,6 +34,36 @@ namespace twozerofoureight
             NotifyAll();
         }
 
+        public void resetAll()
+        {
+            score = 0;
+            board = new int[boardSize, boardSize];
+            var range = Enumerable.Range(0, boardSize);
+            foreach (int i in range)
+            {
+                foreach (int j in range)
+                {
+                    board[i, j] = 0;
+                }
+            }
+            rand = new Random();
+            board = Random(board);
+            board = Random(board);
+
+        }
+
+        public bool isFull()
+        {
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if (board[i, j] == 0) return true;
+                }
+            }
+            return false;
+        }
+       
         public int[,] GetBoard()
         {
             return board;
@@ -39,13 +71,14 @@ namespace twozerofoureight
 
         private int[,] Random(int[,] input)
         {
-            while (true)
+            while (isFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);
-                if (board[x, y] == 0)
+
+                if (input[x, y] == 0)
                 {
-                    board[x, y] = 2;
+                    input[x, y] = 2;
                     break;
                 }
             }
@@ -56,7 +89,7 @@ namespace twozerofoureight
         {
             int[] buffer;
             int pos;
-            int[] rangeX = Enumerable.Range(0, boardSize).ToArray();
+            int[] rangeX = Enumerable.Range(0, boardSize).ToArray(); // array int ตั้งแต่ 0 ถึง board size 
             int[] rangeY = Enumerable.Range(0, boardSize).ToArray();
             Array.Reverse(rangeY);
             foreach (int i in rangeX)
@@ -82,6 +115,7 @@ namespace twozerofoureight
                     if (j > 0 && buffer[j] != 0 && buffer[j] == buffer[j - 1])
                     {
                         buffer[j - 1] *= 2;
+                        score += buffer[j - 1];
                         buffer[j] = 0;
                     }
                 }
@@ -134,6 +168,7 @@ namespace twozerofoureight
                     if (j > 0 && buffer[j] != 0 && buffer[j] == buffer[j - 1])
                     {
                         buffer[j - 1] *= 2;
+                        score += buffer[j - 1];
                         buffer[j] = 0;
                     }
                 }
@@ -188,6 +223,7 @@ namespace twozerofoureight
                     if (j > 0 && buffer[j] != 0 && buffer[j] == buffer[j - 1])
                     {
                         buffer[j - 1] *= 2;
+                        score += buffer[j - 1];
                         buffer[j] = 0;
                     }
                 }
@@ -239,6 +275,7 @@ namespace twozerofoureight
                     if (j > 0 && buffer[j] != 0 && buffer[j] == buffer[j - 1])
                     {
                         buffer[j - 1] *= 2;
+                        score += buffer[j - 1];
                         buffer[j] = 0;
                     }
                 }

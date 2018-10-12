@@ -18,6 +18,9 @@ namespace twozerofoureight
         public TwoZeroFourEightView()
         {
             InitializeComponent();
+            TextBox tb = new TextBox();
+            this.Controls.Add(tb); // keyboard controll
+            tb.KeyDown += new KeyEventHandler(Form1_KeyDown);
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
             controller = new TwoZeroFourEightController();
@@ -27,7 +30,16 @@ namespace twozerofoureight
 
         public void Notify(Model m)
         {
+            label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).score);
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
+            if (!(((TwoZeroFourEightModel)m).isFull()))
+            {
+                MessageBox.Show(" GAME OVER \n  Score "+ ((TwoZeroFourEightModel)m).score+" !!!","GAMEOVER!!!!");
+                ((TwoZeroFourEightModel)m).resetAll();
+                UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
+                label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).score);
+            }
+
         }
 
         private void UpdateTile(Label l, int i)
@@ -41,19 +53,40 @@ namespace twozerofoureight
             switch (i)
             {
                 case 0:
-                    l.BackColor = Color.Gray;
+                    l.BackColor = Color.DimGray;
                     break;
                 case 2:
-                    l.BackColor = Color.DarkGray;
+                    l.BackColor = Color.Gray;
                     break;
                 case 4:
-                    l.BackColor = Color.Orange;
+                    l.BackColor = Color.DarkGray;
                     break;
                 case 8:
+                    l.BackColor = Color.Yellow;
+                    break;
+                case 16:
+                    l.BackColor = Color.Orange;
+                    break;
+                case 32:
+                    l.BackColor = Color.DarkOrange;
+                    break;
+                case 64:
+                    l.BackColor = Color.OrangeRed;
+                    break;
+                case 128:
                     l.BackColor = Color.Red;
                     break;
-                default:
+                case 256:
+                    l.BackColor = Color.DarkRed;
+                    break;
+                case 512:
+                    l.BackColor = Color.GreenYellow;
+                    break;
+                case 1024:
                     l.BackColor = Color.Green;
+                    break;
+                default:
+                    l.BackColor = Color.ForestGreen;
                     break;
             }
         }
@@ -80,6 +113,7 @@ namespace twozerofoureight
         private void btnLeft_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+
         }
 
         private void btnRight_Click(object sender, EventArgs e)
@@ -95,7 +129,28 @@ namespace twozerofoureight
         private void btnDown_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+            
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e) // F key
+        {
+           
+            if (e.KeyCode == Keys.Right) controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+            if (e.KeyCode == Keys.Left) controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+            if (e.KeyCode == Keys.Up) controller.ActionPerformed(TwoZeroFourEightController.UP);
+            if (e.KeyCode == Keys.Down) controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((TwoZeroFourEightModel)model).resetAll();
+            UpdateBoard(((TwoZeroFourEightModel)model).GetBoard());
+            label1.Text = Convert.ToString(((TwoZeroFourEightModel)model).score);
+        }
     }
 }
