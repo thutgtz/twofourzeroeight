@@ -20,9 +20,9 @@ namespace twozerofoureight
         {
             
             InitializeComponent();
-            /*TextBox tb = new TextBox();
+            TextBox tb = new TextBox();
             this.Controls.Add(tb); // keyboard controll
-            tb.KeyDown += new KeyEventHandler(Form1_KeyDown);*/
+            tb.KeyDown += new KeyEventHandler(Form1_KeyDown);
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
             controller = new TwoZeroFourEightController();
