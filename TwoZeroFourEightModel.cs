@@ -51,8 +51,28 @@ namespace twozerofoureight
             board = Random(board);
 
         }
+        public bool isOver()
+        {
+            
+            for (int i = 0; i < boardSize-1; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if (board[i, j] == board[i + 1, j]) return false;
+                }
+            }
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize-1 ; j++)
+                {
+                    if (board[i, j] == board[i, j + 1]) return false;
+                }
+            }
+            return true;
+            
+        }
 
-        public bool isFull()
+        public bool isnotFull()
         {
             for (int i = 0; i < boardSize; i++)
             {
@@ -71,7 +91,7 @@ namespace twozerofoureight
 
         private int[,] Random(int[,] input)
         {
-            while (isFull())
+            while (isnotFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);

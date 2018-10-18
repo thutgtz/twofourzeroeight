@@ -14,13 +14,15 @@ namespace twozerofoureight
     {
         Model model;
         Controller controller;
+        
        
         public TwoZeroFourEightView()
         {
+            
             InitializeComponent();
-            TextBox tb = new TextBox();
+            /*TextBox tb = new TextBox();
             this.Controls.Add(tb); // keyboard controll
-            tb.KeyDown += new KeyEventHandler(Form1_KeyDown);
+            tb.KeyDown += new KeyEventHandler(Form1_KeyDown);*/
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
             controller = new TwoZeroFourEightController();
@@ -31,15 +33,19 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).score);
+            label5.Text = UpdateBoardscore(((TwoZeroFourEightModel)m).GetBoard());
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
-            if (!(((TwoZeroFourEightModel)m).isFull()))
+            if (!((TwoZeroFourEightModel)m).isnotFull())
             {
-                MessageBox.Show(" GAME OVER \n  Score "+ ((TwoZeroFourEightModel)m).score+" !!!","GAMEOVER!!!!");
-                ((TwoZeroFourEightModel)m).resetAll();
-                UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
-                label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).score);
-            }
+                if (((TwoZeroFourEightModel)m).isOver())
+                {
+                    MessageBox.Show(" GAME OVER \n  Score " + ((TwoZeroFourEightModel)m).score + " !!!", "GAMEOVER!!!!");
+                    ((TwoZeroFourEightModel)m).resetAll();
+                    UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
+                    label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).score);   
+                }
 
+            }
         }
 
         private void UpdateTile(Label l, int i)
@@ -110,6 +116,20 @@ namespace twozerofoureight
             UpdateTile(lbl33,board[3, 3]);
         }
 
+        private string UpdateBoardscore(int[,] board)
+        {
+            int score = 0;
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    score += board[i, j];
+                }
+            }
+            return score.ToString();
+            
+        }
+
         private void btnLeft_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
@@ -134,23 +154,23 @@ namespace twozerofoureight
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) // F key
         {
-           
+            
             if (e.KeyCode == Keys.Right) controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
             if (e.KeyCode == Keys.Left) controller.ActionPerformed(TwoZeroFourEightController.LEFT);
             if (e.KeyCode == Keys.Up) controller.ActionPerformed(TwoZeroFourEightController.UP);
             if (e.KeyCode == Keys.Down) controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             ((TwoZeroFourEightModel)model).resetAll();
             UpdateBoard(((TwoZeroFourEightModel)model).GetBoard());
             label1.Text = Convert.ToString(((TwoZeroFourEightModel)model).score);
+            label5.Text = UpdateBoardscore(((TwoZeroFourEightModel)model).GetBoard());
         }
     }
 }

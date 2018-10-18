@@ -52,6 +52,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl00
@@ -268,7 +270,7 @@
             this.btnLeft.CausesValidation = false;
             this.btnLeft.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeft.ForeColor = System.Drawing.Color.Snow;
-            this.btnLeft.Location = new System.Drawing.Point(409, 206);
+            this.btnLeft.Location = new System.Drawing.Point(409, 253);
             this.btnLeft.Margin = new System.Windows.Forms.Padding(4);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(79, 111);
@@ -276,7 +278,6 @@
             this.btnLeft.TabStop = false;
             this.btnLeft.Text = "←";
             this.btnLeft.UseVisualStyleBackColor = false;
-            this.btnLeft.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnUp
@@ -285,7 +286,7 @@
             this.btnUp.CausesValidation = false;
             this.btnUp.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUp.ForeColor = System.Drawing.Color.Snow;
-            this.btnUp.Location = new System.Drawing.Point(489, 206);
+            this.btnUp.Location = new System.Drawing.Point(489, 253);
             this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(71, 55);
@@ -303,7 +304,7 @@
             this.btnRight.CausesValidation = false;
             this.btnRight.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRight.ForeColor = System.Drawing.Color.Snow;
-            this.btnRight.Location = new System.Drawing.Point(561, 206);
+            this.btnRight.Location = new System.Drawing.Point(561, 253);
             this.btnRight.Margin = new System.Windows.Forms.Padding(4);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(78, 111);
@@ -319,7 +320,7 @@
             this.btnDown.CausesValidation = false;
             this.btnDown.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDown.ForeColor = System.Drawing.Color.Snow;
-            this.btnDown.Location = new System.Drawing.Point(489, 262);
+            this.btnDown.Location = new System.Drawing.Point(489, 309);
             this.btnDown.Margin = new System.Windows.Forms.Padding(4);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(71, 55);
@@ -360,7 +361,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Impact", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(406, 160);
+            this.label3.Location = new System.Drawing.Point(406, 207);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 37);
             this.label3.TabIndex = 24;
@@ -373,7 +374,7 @@
             this.button1.Font = new System.Drawing.Font("Impact", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Snow;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(427, 85);
+            this.button1.Location = new System.Drawing.Point(427, 136);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 57);
             this.button1.TabIndex = 25;
@@ -381,12 +382,39 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Impact", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.Location = new System.Drawing.Point(429, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 37);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "SCORE";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Snow;
+            this.label5.Location = new System.Drawing.Point(541, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 37);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "label5";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // TwoZeroFourEightView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkOrange;
             this.ClientSize = new System.Drawing.Size(643, 374);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -418,6 +446,7 @@
             this.Text = "2048 Game";
             this.TopMost = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,6 +478,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
